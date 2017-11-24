@@ -1,41 +1,29 @@
 This Azure Function require additional libraries as follows.
 Please get the source code from following URL?
 
-[https://github.com/yoshioterada/Cognitive-Bot-LUIS-Util](https://github.com/yoshioterada/Cognitive-Bot-LUIS-Util)
+[Source Code of Utility Libraries is here (Cognitive-Bot-LUIS-Util)](https://github.com/yoshioterada/Cognitive-Bot-LUIS-Util/)  
+[Download jar file](https://github.com/yoshioterada/Cognitive-Bot-LUIS-Util/raw/master/Bot-Luis-Translator-Util-1.2.jar)
 
-After download the above, please execute following?
+After download the jar file from above, please execute following?
 
-```
-1. $ mvn clean package -Dmaven.test.skip=true
-```
-Please skip the test ? Or remove test code in your environment ?
-After cleated the package, you can see the libraries on the target directory.
-
-```
-2. $ ls target/
-Bot-Luis-Translator-Util-1.1.jar	
-endorsed				maven-archiver
-classes					generated-sources
-```
-
-Please install the above utility libraries to your local Maven repository? (In general, your local repository will existing on ~/.m2
+Please install the above jar file into your local Maven repository? (In general, your local repository will existing on ~/.m2
 directory.
 
 ```
-3. $ mvn install:install-file \
-    -Dfile=./target/Bot-Luis-Translator-Util-1.1.jar \
+1. $ mvn install:install-file \
+    -Dfile=$DOWNLOAD_DIR/Bot-Luis-Translator-Util-1.2.jar \
     -DgroupId=com.yoshio3 \
     -DartifactId=Bot-Luis-Translator-Util \
-    -Dversion=1.1 \
+    -Dversion=1.2 \
     -Dpackaging=jar \
     -DgeneratePom=true
 ```
 
-Finally please get the Subscription key for Microsoft Translator
+Then please get the Subscription key for Microsoft Translator
 Text and modify the property file in the
 
 ```
-4. Modify the following property file? Especially following.
+2. Modify the following property file? Especially following.
 “src/main/resources/app-resources.properties”
 
 TRANSLATOR_SUBSCRIPTION_KEY=********************************
@@ -44,13 +32,13 @@ TRANSLATOR_SUBSCRIPTION_KEY=********************************
 Then you can compile Azure Functions for Java as follows.
 
 ```
-5. $ mvn clean package
+3. $ mvn clean package
 ```
 
 You can confirm the Application's behavior on your local environment as follows.
 
 ```
-6. $ mvn azure-functions:run
+4. $ mvn azure-functions:run
 Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8
 [INFO] Scanning for projects...
 [INFO] 
@@ -112,7 +100,7 @@ info: Worker.Java.ed32f7f7-1409-40c0-b5e3-092e9e041c8e[0]
 After executed the above, please execute following command on another console terminal?
 
 ```
-7. $ curl -X POST -H "Content-Type:text/plain" -d "Today is so cold" -w "\n" http://localhost:7071/api/translate
+5. $ curl -X POST -H "Content-Type:text/plain" -d "Today is so cold" -w "\n" http://localhost:7071/api/translate
 
 {"original":"Today is so cold","translatedValue":"今日はとても寒いです。"}
 ```
@@ -120,7 +108,7 @@ After executed the above, please execute following command on another console te
 You can specify not only "text/plain" but also "application/json" as follows.
 
 ```
-8. $ curl -X POST -H "Content-Type:application/json" -d "{\"text\":\"Next month is december.\"}" -w "\n" http://localhost:7071/api/translate
+6. $ curl -X POST -H "Content-Type:application/json" -d "{\"text\":\"Next month is december.\"}" -w "\n" http://localhost:7071/api/translate
 
 {"original":"Next month is december.","translatedValue":"来月は 12 月です。"}
 ```
@@ -129,13 +117,13 @@ You can specify not only "text/plain" but also "application/json" as follows.
 In order to deploy to Azure, please execute following?
 
 ```
-9. $ mvn azure-functions:deploy
+7. $ mvn azure-functions:deploy
 ```
 
 After deploy it to Azure, you can access to the public URL like follows.
 
 ```
-10. $ curl -X POST -H "Content-Type:application/json" -d "{\"text\":\"Next month is december.\"}" -w "\n" https://***-*****-**-****-****.azurewebsites.net/api/translate
+8. $ curl -X POST -H "Content-Type:application/json" -d "{\"text\":\"Next month is december.\"}" -w "\n" https://***-*****-**-****-****.azurewebsites.net/api/translate
 {"original":"Next month is december.","translatedValue":"来月は 12 月です。"}
 ```
 
