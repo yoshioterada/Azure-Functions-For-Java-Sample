@@ -1,5 +1,5 @@
 This Azure Function require additional libraries as follows.
-Please get the source code from following URL?
+Please get the library from following URL?
 
 [Source Code of Utility Libraries is here (Cognitive-Bot-LUIS-Util)](https://github.com/yoshioterada/Cognitive-Bot-LUIS-Util/)  
 [Download jar file](https://github.com/yoshioterada/Cognitive-Bot-LUIS-Util/raw/master/Bot-Luis-Translator-Util-1.2.jar)
