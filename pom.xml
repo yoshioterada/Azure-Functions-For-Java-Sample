@@ -15,6 +15,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <ResourceGroupName>Java-Function-Sample</ResourceGroupName>
         <functionAppName>java-function-for-cognitive-services</functionAppName>
         <functionAppRegion>westus</functionAppRegion>
     </properties>
@@ -28,7 +29,7 @@
         <dependency>
             <groupId>com.yoshio3</groupId>
             <artifactId>Bot-Luis-Translator-Util</artifactId>
-            <version>1.1</version>            
+            <version>1.2</version>            
         </dependency>
 
         <!-- Test -->
@@ -56,7 +57,7 @@
                 <plugin>
                     <groupId>com.microsoft.azure</groupId>
                     <artifactId>azure-functions-maven-plugin</artifactId>
-                    <version>0.1.6</version>
+                    <version>0.1.7</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -90,7 +91,7 @@
                 <groupId>com.microsoft.azure</groupId>
                 <artifactId>azure-functions-maven-plugin</artifactId>
                 <configuration>
-                    <resourceGroup>java-functions-group</resourceGroup>
+                    <resourceGroup>${ResourceGroupName}</resourceGroup>
                     <appName>${functionAppName}</appName>
                     <region>${functionAppRegion}</region>
                     <appSettings>

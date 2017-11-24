@@ -15,7 +15,7 @@
         <plugin>
           <groupId>com.microsoft.azure</groupId>
           <artifactId>azure-functions-maven-plugin</artifactId>
-          <version>0.1.6</version>
+          <version>0.1.7</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -56,7 +56,7 @@
           </execution>
         </executions>
         <configuration>
-          <resourceGroup>java-functions-group</resourceGroup>
+          <resourceGroup>${ResourceGroupName}</resourceGroup>
           <appName>${functionAppName}</appName>
           <region>${functionAppRegion}</region>
           <appSettings>
@@ -131,6 +131,7 @@
   <properties>
     <functionAppName>java-function-for-cognitive-services</functionAppName>
     <functionAppRegion>westus</functionAppRegion>
+    <ResourceGroupName>Java-Function-Sample</ResourceGroupName>
     <maven.compiler.source>1.8</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.target>1.8</maven.compiler.target>
